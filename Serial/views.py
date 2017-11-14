@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from Serial.models import Device, Type
@@ -38,7 +38,7 @@ class ItemUpdate(UpdateView):
 
 class ItemDelete(DeleteView):
 	model = Device
-	template_name = 'confirm.html'
+	template_name = 'devices/confirm.html'
 	success_url = reverse_lazy('device-list')
 
 
@@ -48,15 +48,17 @@ class TypeCreation(CreateView):
 	model = Type
 	fields = ['type_name']
 	template_name = 'device_form.html'
+	success_url = reverse_lazy('device-list')
 
 
 class TypeUpdate(UpdateView):
 	model = Type
 	fields = ['type_name']
 	template_name = 'device_form.html'
+	success_url = reverse_lazy('device-list')
 
 
 class TypeDelete(DeleteView):
 	model = Type
-	template_name = 'confirm.html'
+	template_name = 'devices/confirm.html'
 	success_url = reverse_lazy('device-list')

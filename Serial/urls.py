@@ -3,7 +3,8 @@ from django.conf.urls import url, include
 from . import views
 
 urlpatterns = [
-	url(r'', include([
+	url(r'^$', views.home, name='home'),
+	url(r'devices/', include([
 		url(r'^$', views.ItemList.as_view(), name='device-list'),
 		url(r'^create/$', views.ItemCreation.as_view(), name='device-create'),
 		url(r'^(?P<pk>\d+)/', include([

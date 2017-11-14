@@ -20,6 +20,5 @@ from Serial import views
 
 urlpatterns = [
 	url(r'^admin/', admin.site.urls),
-	url(r'^devices/', include('Serial.urls', namespace='devices')),
-	url(r'^$', views.home, name='home'),
+	url(r'', include('Serial.urls')),
 ]
