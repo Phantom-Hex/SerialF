@@ -14,18 +14,15 @@
 
     </button>
     {% endbuttons %}
-    <a class="navbar-brand" href="#">Devices</a>
+    <a class="navbar-brand" href="{% url 'home' %}">Serial Flakes</a>
     <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'home' %}">Go Home</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="{% url 'device-list' %}">Device Inventory</a>
             </li>
-{#            <li class="nav-item">#}
-{#                <a class="nav-link" href="{% url 'type-list' %}">List of Items</a>#}
-{#            </li>#}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'type-list' %}">Type Inventory</a>
+            </li>
         </ul>
     </div>
 </nav>

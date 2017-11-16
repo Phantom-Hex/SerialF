@@ -6,14 +6,14 @@ from django.utils.safestring import mark_safe
 
 class Type(models.Model):
 	type_name = models.CharField(max_length=60)
-	size = models.CharField(max_length=80)
+	type_size = models.CharField(max_length=60)
 
 	@models.permalink
 	def get_absolute_url(self):
 		return 'type-detail', (), {'pk': self.pk}
 
 	def __str__(self):
-		return "{} ({})".format(self.type_name, self.size)
+		return "{} {}".format(self.type_size, self.type_name.lower())
 
 
 class Maker(models.Model):

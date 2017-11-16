@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <h1>About {{ type.type_name }}</h1>
+    <br />
+    <h2>A {{ type.type_size|lower }} {{ type.type_name|lower }}.</h2>
+    <br />
+        {% if type.device_type.count > 0 %}
+            <h4>Items registered:</h4>
+            {% for foo in type.device_type.all %}
+                <p>{{ foo.name }}</p>
+            {% endfor %}
+        {% endif %}
+    </ul>
+
+    <a class="btn" href="{% url 'type-list' %}">Return to inventory</a>
+    <a class="btn btn-sm" href="{% url 'type-update' type.pk %}">Update</a>
+    <a class="btn btn-sm" href="{% url 'type-delete' type.pk %}">Delete</a>
+{% endblock %}

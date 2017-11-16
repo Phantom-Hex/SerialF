@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h1>About {{ device.name }}</h1>
+    <br />
+    <h3>{{ device.name }} is a {{ device.type.type_size|lower }} {{ device.type.type_name|lower }} made by {{ device.maker }}</h3>
+    <h3>Vital Data:</h3>
+    <ul class="list">
+        <li><img src="../../{{ device.photo }}"></li>
+        <li>{{ device.SKU }}</li>
+        <li>{{ device.description }}</li>
+        <li>{{ device.created_at }}</li>
+    </ul>
+
+    <a class="btn" href="{% url 'device-list' %}">Return to inventory</a>
+    <a class="btn btn-sm" href="{% url 'device-update' device.pk %}">Update</a>
+    <a class="btn btn-sm" href="{% url 'device-delete' device.pk %}">Delete</a>
+{% endblock %}
