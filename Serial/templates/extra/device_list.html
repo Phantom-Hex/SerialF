@@ -16,8 +16,12 @@
                 <td>{{ device.name }}</td>
                 <td>
                     <a class="btn btn-primary btn-sm" href="{% url 'device-detail' device.pk %}">Detail</a>
-                    <a class="btn btn-warning btn-sm" href="{% url 'device-update' device.pk %}">Update</a>
-                    <a class="btn btn-danger btn-sm" href="{% url 'device-delete' device.pk %}">Delete</a>
+                    {% if user.is_authenticated %}
+                        <a class="btn btn-warning btn-sm" href="{% url 'device-update' type.pk %}">Update</a>
+                        <a class="btn btn-danger btn-sm" href="{% url 'device-delete' type.pk %}">Delete</a>
+                    {% else %}
+                        <td>Only users can modify items.</td>
+                    {% endif %}
                 </td>
             </tr>
         {% endfor %}

@@ -1,6 +1,10 @@
 {% extends 'layout.html' %}
 
 {% block content %}
+    <div class="jumbotron text-center">
+        <h1>Serial Flakes</h1>
+        <p>A Code Louisville project.</p>
+    </div>
     {% if user.is_authenticated %}
         <h1>Hello, {{ user }}</h1>
         {% else %}

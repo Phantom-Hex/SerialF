@@ -16,8 +16,12 @@
                 <td>{{ type.type_name }} - {{ type.type_size }}</td>
                 <td>
                     <a class="btn btn-primary btn-sm" href="{% url 'type-detail' type.pk %}">Detail</a>
-                    <a class="btn btn-warning btn-sm" href="{% url 'type-update' type.pk %}">Update</a>
-                    <a class="btn btn-danger btn-sm" href="{% url 'type-delete' type.pk %}">Delete</a>
+                    {% if user.is_authenticated %}
+                        <a class="btn btn-warning btn-sm" href="{% url 'type-update' type.pk %}">Update</a>
+                        <a class="btn btn-danger btn-sm" href="{% url 'type-delete' type.pk %}">Delete</a>
+                    {% else %}
+                        <td>Only users can modify items.</td>
+                    {% endif %}
                 </td>
             </tr>
         {% endfor %}

@@ -15,6 +15,9 @@
     </ul>
 
     <a class="btn" href="{% url 'type-list' %}">Return to inventory</a>
-    <a class="btn btn-sm" href="{% url 'type-update' type.pk %}">Update</a>
-    <a class="btn btn-sm" href="{% url 'type-delete' type.pk %}">Delete</a>
+
+    {% if user.is_authenticated %}
+        <a class="btn btn-sm" href="{% url 'type-update' type.pk %}">Update</a>
+        <a class="btn btn-sm" href="{% url 'type-delete' type.pk %}">Delete</a>
+    {% endif %}
 {% endblock %}
