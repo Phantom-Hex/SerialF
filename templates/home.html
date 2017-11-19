@@ -3,17 +3,22 @@
 Serial Flakes
 {% endblock %}
 {% block content %}
-    <div class="jumbotron jumbotron-fluid text-center">
+    <div class="jumbotron text-center">
         <h1>Serial Flakes</h1>
         <p>A Code Louisville project.</p>
     </div>
     {% if user.is_authenticated %}
-        <h1>Hello, {{ user }}</h1>
+        <h1>Welcome, {{ user }}!</h1>
         {% else %}
         <h1>Hi there!</h1>
     {% endif %}
     {% if user.is_authenticated %}
         <p>This is a project designed to keep things in check. Feel free to browse around.</p>
+        <form action="{% url 'logout' %}" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" id="submit" name="submit" value="Logout" />
+        </form>
         {% else %}
         <p>Welcome to the Serial Flakes project.
             If you haven't already, please create a username for yourself through the admin/terminal and then login through the admin panel.

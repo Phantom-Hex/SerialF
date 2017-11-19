@@ -5,14 +5,34 @@ Device Listing | Serial Flakes
 {% block content %}
     <table class="table table-hover">
         <caption>
-            <a class="btn btn-primary btn-sm" href="{% url 'device-create' %}">Create</a>
+            <a class="btn btn-primary" href="{% url 'device-create' %}">Create</a>
         </caption>
         <thead>
             <tr>
-                <th>{{ devices.count }} Devices in Inventory</th>
-                <th>Available Actions</th>
+                <th>{{ devices.count }} devices in Inventory</th>
             </tr>
         </thead>
+    </table>
+    <div class="row">
+        {% for device in devices %}
+        <div class="col-md-3">
+            <div class="card">
+                <img class="card-img-top" src="../../{{ device.photo }}" alt="{{ device.description }}">
+                <div class="card-body">
+                  <h4 class="card-title">{{ device.name }}</h4>
+                  <p class="card-text">by {{ device.maker }}</p>
+                  <a href="{% url 'device-detail' device.pk %}" class="btn btn-primary">Details</a>
+                </div>
+            </div>
+        <br />
+        </div>
+        {% endfor %}
+    </div>
+
+        {% comment %}
+
+        List style version
+
         {% for device in devices %}
             <tr>
                 <td>{{ device.name }}</td>
@@ -26,6 +46,5 @@ Device Listing | Serial Flakes
                     {% endif %}
                 </td>
             </tr>
-        {% endfor %}
-    </table>
+        {% endfor %}{% endcomment %}
 {% endblock %}
