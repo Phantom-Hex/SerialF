@@ -45,3 +45,11 @@ class Device(models.Model):
 
 	def thumbnail(self):
 		return mark_safe(u'<img_src="../%s" />' % self.photo)
+
+
+class UserLoginForm(models.Model):
+	email = models.EmailField(max_length=100)
+	password = models.CharField(max_length=100)
+
+	def __unicode__(self):
+		return self.email

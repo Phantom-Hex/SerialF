@@ -1,5 +1,8 @@
+from django.contrib.auth import login
+from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render
 from django.urls import reverse_lazy
+from django.views import generic
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from Serial.models import Device, Type
@@ -7,6 +10,21 @@ from Serial.models import Device, Type
 
 def home(request):
 	return render(request, 'home.html')
+
+
+class LoginView(generic.FormView):
+	form_class = AuthenticationForm
+	success_url = reverse_lazy('home')
+	template_name = "form.html"
+
+	def get_form(self, form_class=None):
+		if form_class is None:
+			form_class = self.get_form_class()
+		return form_class(self.request, **self.get_form_kwargs())
+
+	def form_valid(self, form):
+		login(self.request, form.get_user())
+		return super().form_valid(form)
 
 
 # Views for showing things

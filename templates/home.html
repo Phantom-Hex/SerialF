@@ -1,7 +1,9 @@
 {% extends 'layout.html' %}
-
+{% block title %}
+Serial Flakes
+{% endblock %}
 {% block content %}
-    <div class="jumbotron text-center">
+    <div class="jumbotron jumbotron-fluid text-center">
         <h1>Serial Flakes</h1>
         <p>A Code Louisville project.</p>
     </div>
@@ -14,7 +16,13 @@
         <p>This is a project designed to keep things in check. Feel free to browse around.</p>
         {% else %}
         <p>Welcome to the Serial Flakes project.
-            If you haven't already, please create a username for yourself through the terminal and then login through the admin panel.
+            If you haven't already, please create a username for yourself through the admin/terminal and then login through the admin panel.
             You'll get a new message here once finished.</p>
+        <p>Or, if you have a login already, please login!</p>
+        <form action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" id="submit" name="submit" value="Login" />
+        </form>
     {% endif %}
 {% endblock %}

@@ -1,15 +1,17 @@
 {% extends 'layout.html' %}
-
+{% block title %}
+About {{ device.name }} | Serial Flakes
+{% endblock %}
 {% block content %}
     <h1>About {{ device.name }}</h1>
     <br />
-    <h3>{{ device.name }} is a {{ device.type.type_size|lower }} {{ device.type.type_name|lower }} made by {{ device.maker }}</h3>
-    <h3>Vital Data:</h3>
-    <ul class="list">
+    <h4>{{ device.name }} is a {{ device.type.type_size|lower }} {{ device.type.type_name|lower }} made by {{ device.maker }}</h4>
+    <h4>Vital Data:</h4>
+    <ul class="list" style="list-style: none">
         <li><img src="../../{{ device.photo }}"></li>
-        <li>{{ device.SKU }}</li>
         <li>{{ device.description }}</li>
-        <li>{{ device.created_at }}</li>
+        <li>SKU: {{ device.SKU }}</li>
+        <li>Created {{ device.created_at|timesince }} ago on {{  device.created_at }}</li>
     </ul>
 
     <a class="btn" href="{% url 'device-list' %}">Return to inventory</a>

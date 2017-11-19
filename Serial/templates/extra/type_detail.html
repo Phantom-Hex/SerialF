@@ -1,7 +1,8 @@
 {% extends 'layout.html' %}
-
+{% block title %}
+About {{ type.type_name }} | Serial Flakes
+{% endblock %}
 {% block content %}
-
     <h1>About {{ type.type_name }}</h1>
     <br />
     <h2>A {{ type.type_size|lower }} {{ type.type_name|lower }}.</h2>

@@ -20,5 +20,6 @@ from Serial import views
 
 urlpatterns = [
 	url(r'^admin/', admin.site.urls),
-	url(r'^', include('Serial.urls')),
+	url(r'', include('Serial.urls')),
+	url(r'^login/$', views.LoginView.as_view(), name='login'),
 ]
