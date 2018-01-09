@@ -17,9 +17,9 @@ Device Listing | Serial Flakes
     </table>
     <div class="row">
         {% for device in devices %}
-        <div class="col-md-3">
+        <div class="col-lg-3 col-md-4">
             <div class="card">
-                <img class="card-img-top" src="../../{{ device.photo }}" alt="{{ device.description }}">
+                <img class="card-img-top img-fluid" src="../../{{ device.photo }}" alt="{{ device.description }}">
                 <div class="card-body">
                   <h4 class="card-title">{{ device.name }}</h4>
                   <p class="card-text">by {{ device.maker }}</p>
