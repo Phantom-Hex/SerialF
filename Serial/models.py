@@ -1,7 +1,11 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
-from django.utils.safestring import mark_safe
+
+
+def user_directory_path(instance, filename):
+	return u'user_{0}/{1}'.format(instance.user.id, filename)
 
 
 class Type(models.Model):
@@ -33,8 +37,9 @@ class Device(models.Model):
 	maker = models.ForeignKey(Maker, models.CASCADE, related_name='device_creator')
 	SKU = models.CharField(max_length=60)
 	description = models.TextField()
-	created_at = models.DateTimeField(auto_now=True)
-	photo = models.ImageField(blank=True, null=True, upload_to="static/images")
+	created_at = models.DateTimeField(auto_now_add=True)
+	photo = models.ImageField(upload_to='img/%Y-%m-%d', null=True, blank=True)
+	created_by = models.ForeignKey(User, on_delete=models.CASCADE)
 
 	@models.permalink
 	def get_absolute_url(self):
@@ -42,9 +47,6 @@ class Device(models.Model):
 
 	def __str__(self):
 		return "{} ({})".format(self.name, self.type)
-
-	def thumbnail(self):
-		return mark_safe(u'<img_src="../%s" />' % self.photo)
 
 
 class UserLoginForm(models.Model):

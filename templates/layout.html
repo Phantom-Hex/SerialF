@@ -1,46 +1,44 @@
-{% load bootstrap4 %}
-
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}{% endblock %}</title>
+    <title>{% block title %}{% endblock %} | Serial Flakes</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 </head>
 <body>
 
-<!-- Navbar bootstrap -->
-<nav class="navbar navbar-expand-md bg-dark navbar-dark justify-content-between">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-md navbar-dark bg-dark justify-content-between lead">
     <div class="container">
-        <a class="navbar-brand m-1 h1" href="{% url 'home' %}">Serial Flakes</a>
+        <a class="navbar-brand navbar-link m-1 h1" href="{% url 'home' %}">Serial Flakes</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
-            <ul class="navbar-nav nav">
-                <li class="nav-item">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item navbar-btn">
                     <a class="nav-link" href="{% url 'device-list' %}">Device Inventory</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item navbar-btn">
                     <a class="nav-link" href="{% url 'type-list' %}">Type Inventory</a>
                 </li>
             </ul>
-        </div>
-        <div class="pt-1 mt-1">
-            <p class="lead text-muted">
+            <div class="text-muted">
                 {% if user.is_authenticated %}
                     {{ user }} |
-                {% endif %}{% if user.is_authenticated %}
+                {% endif %}
+                {% if user.is_authenticated %}
                     <a href="{% url 'logout' %}" class="btn-sm btn-primary">Logout</a>
                 {% else %}
                     <a href="{% url 'login' %}" class="btn-sm btn-primary">Login</a> |
                     <a href="{% url 'signup' %}" class="btn-sm btn-primary">Register</a>
                 {% endif %}
-            </p>
+            </div>
         </div>
     </div>
 </nav>
@@ -50,5 +48,22 @@
     {% block content %}
     {% endblock %}
 </div>
+<footer class="panel-footer bg-dark text-center text-light pb-4">
+    <div class="container">
+        {% block footer %}
+        {% endblock %}
+    </div>
+    <hr>
+    <a href="http://facebook.com">
+        <i class="fab fa-facebook-square fa-3x mx-auto"></i>
+    </a>
+    <a href="http://twitter.com">
+        <i class="fab fa-twitter-square fa-3x mx-auto"></i>
+    </a>
+    <a href="http://tumblr.com">
+        <i class="fab fa-tumblr-square fa-3x mx-auto"></i>
+    </a>
+    <blockquote class="blockquote"><small>&copy - Tony Thigpen</small></blockquote>
+</footer>
 </body>
 </html>

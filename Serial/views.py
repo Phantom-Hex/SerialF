@@ -5,6 +5,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 
 from Serial.models import Device, Type
+from . import forms
 
 
 def home(request):
@@ -35,7 +36,7 @@ class LogoutView(generic.RedirectView):
 
 
 class SignUp(generic.CreateView):
-	form_class = UserCreationForm
+	form_class = forms.UserSignupForm
 	success_url = reverse_lazy("login")
 	template_name = "form.html"
 
@@ -60,11 +61,20 @@ class ItemCreation(generic.CreateView):
 	fields = ['name', 'type', 'maker', 'description', 'SKU', 'photo']
 	template_name = 'form.html'
 
+	def form_valid(self, form):
+		form.instance.created_by = self.request.user
+		return super().form_valid(form)
+
 
 class ItemUpdate(generic.UpdateView):
 	model = Device
 	fields = ['name', 'type', 'maker', 'description', 'SKU', 'photo']
 	template_name = 'form.html'
+
+	def form_valid(self, form):
+		form.instance.created_by = self.request.user
+		form.save()
+		return super().form_valid(form)
 
 
 class ItemDelete(generic.DeleteView):

@@ -1,17 +1,16 @@
 {% extends 'layout.html' %}
 {% block title %}
-About {{ type.type_name }} | Serial Flakes
+About {{ type.type_name }}
 {% endblock %}
 {% block content %}
     <h1>About {{ type.type_name }}</h1>
-    <br />
     <h2>A {{ type.type_size|lower }} {{ type.type_name|lower }}.</h2>
     <br />
     <ul>
         {% if type.device_type.count > 0 %}
             <h4>Items registered:</h4>
             {% for foo in type.device_type.all %}
-                <li><a href="{{ foo.get_absolute_url }}">{{ foo.name }}</a></li>
+                <li class="list-unstyled"><a href="{{ foo.get_absolute_url }}">{{ foo.name }}</a></li>
             {% endfor %}
         {% endif %}
     </ul>

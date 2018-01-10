@@ -1,6 +1,6 @@
 {% extends 'layout.html' %}
 {% block title %}
-Serial Flakes
+    Home
 {% endblock %}
 {% block content %}
     <div class="jumbotron text-center">
@@ -9,15 +9,14 @@ Serial Flakes
     </div>
     {% if user.is_authenticated %}
         <h1 class="display-4">Welcome, {{ user }}!</h1>
-        {% else %}
-        <h1 class="display-4">Hi there!</h1>
-    {% endif %}
-    {% if user.is_authenticated %}
-        <p>This is a project designed to keep things in check. Feel free to browse around.</p>
+        <p class="lead">This is a project designed to keep things in check. Feel free to browse around.</p>
     {% else %}
+        <h1 class="display-4">Hi there!</h1>
         <p class="lead">Welcome to the Serial Flakes project.
-            If you haven't already, please create a username for yourself through the admin/terminal and then login through the admin panel.
-            You'll get a new message here once finished.</p>
-        <p>Or, if you have a login already, please login!</p>
+            If you haven't already, please register and then login.<br>
+            Or, if you have a login already, please login!</p>
+    {% endif %}
+    {% if user.is_staff %}
+        <p class="lead">Okay, what the hell happened?</p>
     {% endif %}
 {% endblock %}

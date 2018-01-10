@@ -1,42 +1,38 @@
 {% extends 'layout.html' %}
 {% block title %}
-Device Listing | Serial Flakes
+    Device Listing
 {% endblock %}
 {% block content %}
-    <table class="table table-hover">
+    <table class="table table-hover table-responsive">
         <caption>
             {% if user.is_authenticated %}
                 <a class="btn btn-primary" href="{% url 'device-create' %}">Create</a>
             {% endif %}
         </caption>
         <thead>
-            <tr>
-                <th>{{ devices.count }} devices in Inventory</th>
-            </tr>
+        <tr>
+            <th>{{ devices.count }} devices in Inventory</th>
+        </tr>
         </thead>
     </table>
     <div class="row">
         {% for device in devices %}
-        <div class="col-lg-3 col-md-4">
-            <div class="card">
-                <img class="card-img-top img-fluid" src="../../{{ device.photo }}" alt="{{ device.description }}">
-                <div class="card-body">
-                  <h4 class="card-title">{{ device.name }}</h4>
-                  <p class="card-text">by {{ device.maker }}</p>
-                    {% if user.is_authenticated %}
-                    <a href="{% url 'device-detail' device.pk %}" class="btn btn-primary">Details</a>
-                    {% endif %}
+            <div class="col-sm-3 col-md-3 col-xl-4">
+                <div class="card bg-dark text-light">
+                    <img class="card-img-top img-thumbnail" src="{{ MEDIA_URL }}{{ device.photo }}" alt="{{ device.description }}">
+                    <div class="card-body">
+                        <h6 class="card-title lead">{{ device.name }}</h6>
+                        <p class="card-text small">{{ device.maker }}</p>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'device-detail' device.pk %}" class="btn btn-primary">Details</a>
+                        {% endif %}
+                    </div>
                 </div>
+            <br />
             </div>
-        <br />
-        </div>
         {% endfor %}
     </div>
-
-        {% comment %}
-
-        List style version
-
+    {% comment %}
         {% for device in devices %}
             <tr>
                 <td>{{ device.name }}</td>
@@ -50,5 +46,6 @@ Device Listing | Serial Flakes
                     {% endif %}
                 </td>
             </tr>
-        {% endfor %}{% endcomment %}
+        {% endfor %}
+    {% endcomment %}
 {% endblock %}
