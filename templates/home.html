@@ -4,19 +4,28 @@
 {% endblock %}
 {% block content %}
     <div class="jumbotron text-center">
-        <h1 class="display-2">Serial Flakes</h1>
+        <p class="display-1" style="font-family: Bungee, serif;">Serial Flakes</p>
         <h2 class="text-muted">A Code Louisville project.</h2>
     </div>
-    {% if user.is_authenticated %}
+    <div class="lead">
+    {% if user.is_authenticated and user.first_name != null %}
+        <h1 class="display-4">Welcome, {{ user.first_name }}!</h1>
+        <p>This is a project designed to keep things in check. Feel free to browse around.</p>
+    {% elif user.is_authenticated %}
         <h1 class="display-4">Welcome, {{ user }}!</h1>
-        <p class="lead">This is a project designed to keep things in check. Feel free to browse around.</p>
+        <p >This is a project designed to keep things in check. Feel free to browse around, {{ user.first_name }}.</p>
     {% else %}
         <h1 class="display-4">Hi there!</h1>
         <p class="lead">Welcome to the Serial Flakes project.
             If you haven't already, please register and then login.<br>
             Or, if you have a login already, please login!</p>
     {% endif %}
-    {% if user.is_staff %}
-        <p class="lead">Okay, what the hell happened?</p>
+    <p>This program works well for home and company inventory control purposes.
+        As basic as this looks, a lot is going on behind the scenes.</p>
+    </div>
+{% endblock %}
+{% block footer %}
+    {% if user.is_superuser %}
+        <p class="lead pt-3">Okay, what the hell happened?</p>
     {% endif %}
 {% endblock %}

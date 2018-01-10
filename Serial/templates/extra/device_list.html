@@ -3,49 +3,47 @@
     Device Listing
 {% endblock %}
 {% block content %}
-    <table class="table table-hover table-responsive">
-        <caption>
+    <div>
+        <p class="lead py-3">{{ devices.count }} devices in System Inventory</p>
             {% if user.is_authenticated %}
                 <a class="btn btn-primary" href="{% url 'device-create' %}">Create</a>
             {% endif %}
-        </caption>
-        <thead>
-        <tr>
-            <th>{{ devices.count }} devices in Inventory</th>
-        </tr>
-        </thead>
-    </table>
-    <div class="row">
-        {% for device in devices %}
-            <div class="col-sm-3 col-md-3 col-xl-4">
-                <div class="card bg-dark text-light">
-                    <img class="card-img-top img-thumbnail" src="{{ MEDIA_URL }}{{ device.photo }}" alt="{{ device.description }}">
-                    <div class="card-body">
-                        <h6 class="card-title lead">{{ device.name }}</h6>
-                        <p class="card-text small">{{ device.maker }}</p>
-                        {% if user.is_authenticated %}
-                            <a href="{% url 'device-detail' device.pk %}" class="btn btn-primary">Details</a>
-                        {% endif %}
-                    </div>
-                </div>
-            <br />
-            </div>
-        {% endfor %}
     </div>
-    {% comment %}
-        {% for device in devices %}
-            <tr>
-                <td>{{ device.name }}</td>
-                <td>
-                    <a class="btn btn-primary btn-sm" href="{% url 'device-detail' device.pk %}">Detail</a>
-                    {% if user.is_authenticated %}
-                        <a class="btn btn-warning btn-sm" href="{% url 'device-update' device.pk %}">Update</a>
-                        <a class="btn btn-danger btn-sm" href="{% url 'device-delete' device.pk %}">Delete</a>
-                    {% else %}
-                        <td>Only users can modify items.</td>
-                    {% endif %}
-                </td>
-            </tr>
-        {% endfor %}
-    {% endcomment %}
+    <div class="row">
+        <div class="col-md-4 col-lg-3">
+            <table class="table table-responsive">
+                <thead class="">
+                <tr>
+                    <th>Last 5 added</th>
+                </tr>
+                </thead>
+                {% for device in devices|slice:":5" %}
+                    <tr>
+                        <td>{{ device.name|upper }}<br>
+                        <small class="small">Added by {{ device.created_by.first_name }}</small></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="col-sm-8 col-md-8 col-lg-9">
+            <div class="row">
+                {% for device in devices %}
+                    <div class="col-xs-2 col-md-3 col-lg-3 col-xl-3">
+                        <div class="card bg-dark text-light">
+                            <img class="card-img-top img-thumbnail" src="{{ MEDIA_URL }}{{ device.photo }}"
+                                 alt="{{ device.description }}">
+                            <div class="card-body">
+                                <h6 class="card-title lead">{{ device.name }}</h6>
+                                <p class="card-text small">{{ device.maker }}</p>
+                                {% if user.is_authenticated %}
+                                    <a href="{% url 'device-detail' device.pk %}" class="btn btn-primary">Details</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <br/>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -14,10 +14,9 @@
         <li><strong>Name:</strong> {{ device.name }} </li>
         <li><strong>Description:</strong> {{ device.description }}</li>
         <li><strong>SKU:</strong> {{ device.SKU }}</li>
-        <br /><br />
+        <hr>
         <li class="small">Created {{ device.created_at|timesince }} ago on {{  device.created_at }} by {{ device.created_by.first_name }}</li>
     </ul>
-
     <div class="btn-group">
         <a class="btn btn-sm btn-secondary" href="{% url 'device-list' %}">Return to inventory</a>
         {% if user.is_authenticated %}
@@ -26,3 +25,4 @@
         {% endif %}
     </div>
 {% endblock %}
+
