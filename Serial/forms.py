@@ -15,5 +15,7 @@ class UserSignupForm(UserCreationForm):
 
 
 class UpdateForm(UserChangeForm):
-        fields = ("username", "email", "first_name", "last_name", "password1", "password2")
+    class Meta:
+        fields = ("username", "email", "first_name", "last_name")
+        exclude = ("password1","password2")
         model = get_user_model()

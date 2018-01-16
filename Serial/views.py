@@ -11,6 +11,8 @@ from . import forms
 def home(request):
 	return render(request, 'home.html')
 
+# User-related views
+
 
 class LoginView(generic.FormView):
 	form_class = AuthenticationForm
@@ -35,13 +37,23 @@ class LogoutView(generic.RedirectView):
 		return super().get(request, *args, **kwargs)
 
 
+class EditView(generic.FormView):
+	form_class = forms.UpdateForm
+	success_url = reverse_lazy('home')
+	template_name = "form.html"
+
+	def form_valid(self, form):
+		login(self.request, form.get_user())
+		return super().form_valid(form)
+
+
 class SignUp(generic.CreateView):
 	form_class = forms.UserSignupForm
 	success_url = reverse_lazy("login")
 	template_name = "form.html"
 
 
-# Views for showing things
+# Device-related views
 
 class ItemList(generic.ListView):
 	model = Device
@@ -82,7 +94,7 @@ class ItemDelete(generic.DeleteView):
 	success_url = reverse_lazy('device-list')
 
 
-# Views for editing types
+# Type-related views
 
 class TypeList(generic.ListView):
 	model = Type

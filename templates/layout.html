@@ -5,18 +5,15 @@
     <title>{% block title %}{% endblock %} | Serial Flakes</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Questrial:400|Bungee:400" rel="stylesheet">
-    <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Oswald:300|Bungee:400" rel="stylesheet">
 </head>
-<body style="font-family: Questrial;">
+<body style="font-family: 'Oswald', 'Helvetica Neue', Helvetica, Arial, sans-serif;">
 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-md navbar-dark bg-dark justify-content-between">
-    <div class="container mr-auto lead text-uppercase small">
-        <a class="navbar-brand navbar-link" href="{% url 'home' %}" style="font-family: Bungee, serif;">Serial Flakes</a>
+    <div class="container mr-auto text-uppercase small">
+        <a class="navbar-brand navbar-link" href="{% url 'home' %}" style="font-family: Bungee, serif;">Serial
+            Flakes</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -31,7 +28,7 @@
             </ul>
             <div class="text-muted">
                 {% if user.is_authenticated and user.first_name != null %}
-                    {{ user.first_name }} {{ user.last_name }} |
+                    <a href="{% url 'account' user.pk %}">{{ user.first_name }} {{ user.last_name }}</a> |
                 {% elif user.is_authenticated %}
                     {{ user }} |
                 {% endif %}
@@ -51,25 +48,35 @@
     {% block content %}
     {% endblock %}
 </div>
-<footer class="panel-footer bg-dark text-center text-light pb-4">
+<footer class="panel-footer bg-dark text-center text-light p-5 my-5">
     <div class="container">
         {% block footer %}
         {% endblock %}
     </div>
     {% if user.is_superuser %}
-        <p class="text-danger text-uppercase">Danger mode is active.</p>
+        <p class="text-danger text-uppercase pt-4">Danger mode is active.</p>
     {% endif %}
     <hr>
     <a href="http://facebook.com">
-        <i class="fab fa-facebook-square fa-3x mx-auto"></i>
+        <i class="fab fa-facebook-square mx-auto fa-2x"></i>&nbsp;
     </a>
     <a href="http://twitter.com">
-        <i class="fab fa-twitter-square fa-3x mx-auto"></i>
+        <i class="fab fa-twitter-square mx-auto fa-2x"></i>&nbsp;
     </a>
     <a href="http://tumblr.com">
-        <i class="fab fa-tumblr-square fa-3x mx-auto"></i>
+        <i class="fab fa-tumblr-square mx-auto fa-2x"></i>&nbsp;
     </a>
-    <blockquote class="blockquote"><small>&copy - Tony Thigpen</small></blockquote>
+    <a href="http://github.com/tonytornado">
+        <i class="fab fa-github-square mx-auto fa-2x"></i>&nbsp;
+    </a>
+    <blockquote class="blockquote">
+        <small>&copy; 2018 - Tony Thigpen</small>
+    </blockquote>
 </footer>
+<!-- Scripts -->
+<script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 </body>
 </html>

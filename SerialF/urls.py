@@ -23,5 +23,6 @@ urlpatterns = [
 	url(r'', include('Serial.urls')),
 	url(r'^login/', views.LoginView.as_view(), name='login'),
 	url(r'^logout/', views.LogoutView.as_view(), name='logout'),
+	url(r'^account/(?P<pk>\d+)', views.EditView.as_view(), name='account'),
 	url(r'^signup/', views.SignUp.as_view(), name='signup')
 ]

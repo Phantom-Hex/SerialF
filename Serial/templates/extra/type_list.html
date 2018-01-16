@@ -3,27 +3,29 @@
     Type Listing
 {% endblock %}
 {% block content %}
-    <table class="table table-responsive">
-        <caption>
-            {% if user.is_authenticated %}
-                <a class="btn btn-primary btn-sm" href="{% url 'type-create' %}">Create</a>
-            {% endif %}
-        </caption>
+    <table class="table table-hover">
         <thead class="lead">
         <tr>
             {% with counter=types.count %}
-            <th>{{ counter }} Type{{ counter|pluralize }} registered</th>
+                <th>{{ counter }} Type{{ counter|pluralize }} registered<br/>
             {% endwith %}
+            {% if user.is_authenticated %}
+                <a class="btn btn-sm btn-outline-primary" href="{% url 'type-create' %}">Create</a>
+            {% endif %}
+            </th>
         </tr>
         </thead>
         {% for type in types %}
             <tr class="text-justify align-middle">
-                <td class="">{{ type.type_name }} <br><small>{{ type.type_size }}</small></td>
+                <td class="">{{ type.type_name }} <br>
+                    <small>{{ type.type_size }}</small>
+                </td>
                 <td class="">
-                {% with devcount=type.device_type.count%}{% if type.device_type.count > 0 %}
-                    <li class="list-unstyled">{{ devcount }}<br>
-                        <small>device{{ devcount|pluralize }}</small></li>
-                {% endif %}{% endwith %}
+                    {% with devcount=type.device_type.count %}{% if type.device_type.count > 0 %}
+                        <li class="list-unstyled">{{ devcount }}<br>
+                            <small>device{{ devcount|pluralize }}</small>
+                        </li>
+                    {% endif %}{% endwith %}
                 </td>
                 <td class="btn-group">
                     {% if user.is_authenticated %}
