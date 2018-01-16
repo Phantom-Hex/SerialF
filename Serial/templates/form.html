@@ -2,13 +2,14 @@
 {% load bootstrap4 %}
 
 {% block content %}
-    <div class="container col-8 pt-4">
-        <form action="" method="post" class="form" enctype="multipart/form-data">
+    <div class="container col-10 pt-4">
+        <form action="" method="post" class="form form-group" enctype="multipart/form-data">
             {% csrf_token %}
             {% bootstrap_form form %}
             {% buttons %}
-                <button type="submit" value="Save" class="btn btn-primary">Submit</button>
+                <button type="submit" value="Save" class="btn btn-sm btn-outline-primary">Submit</button>
             {% endbuttons %}
+            {% bootstrap_css %}
         </form>
     </div>
 {% endblock %}
