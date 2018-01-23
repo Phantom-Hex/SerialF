@@ -8,7 +8,7 @@
     <h4>Vital Data:</h4>
     <figure class="Figure">
         <img src="{{ MEDIA_URL }}{{ device.photo }}" alt="{{ device.name }}" class="figure-img img-fluid" width="640" height="480">
-        <figcaption class="caption">{{ device.name }} is a {{ device.type.type_size|lower }} {{ device.type.type_name|lower }} made by {{ device.maker }}.</figcaption>
+        <figcaption class="caption">{{ device.name }} is a {{ device.type.type_size|lower }} {{ device.type.type_name|lower }} made by <a href="{{ device.maker.maker_wiki }}">{{ device.maker }}</a>.</figcaption>
     </figure>
     <ul class="list list-unstyled">
         <li><strong>Name:</strong> {{ device.name }} </li>

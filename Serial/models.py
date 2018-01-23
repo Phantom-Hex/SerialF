@@ -30,6 +30,9 @@ class Maker(models.Model):
 	def __str__(self):
 		return "{}".format(self.maker_name)
 
+	def maker_wiki(self):
+		return "http://en.wikipedia.com/wiki/{}".format(self.maker_name)
+
 
 class Device(models.Model):
 	name = models.CharField(max_length=255)
@@ -38,7 +41,7 @@ class Device(models.Model):
 	SKU = models.CharField(max_length=60)
 	description = models.TextField()
 	created_at = models.DateTimeField(auto_now_add=True)
-	photo = models.ImageField(upload_to='img/%Y-%m-%d', null=True, blank=True)
+	photo = models.ImageField(upload_to='img/%Y-%m-%d', null=True, blank=True, default="img/no-img.jpg")
 	created_by = models.ForeignKey(User, on_delete=models.CASCADE)
 
 	@models.permalink
