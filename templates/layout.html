@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Oswald:300|Bungee:400" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/site.css">
 </head>
-<body style="font-family: 'Oswald', 'Helvetica Neue', Helvetica, Arial, sans-serif;">
+<body>
 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-md navbar-dark bg-dark justify-content-between">
     <div class="container mr-auto text-uppercase small">
-        <a class="navbar-brand navbar-link" href="{% url 'home' %}" style="font-family: Bungee, serif;">Serial
+        <a class="navbar-brand navbar-link" href="{% url 'home' %}" id="SF">Serial
             Flakes</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
@@ -44,7 +45,7 @@
 </nav>
 
 {# Other content #}
-<div class="container">
+<div class="container mx-auto">
     {% block content %}
     {% endblock %}
 </div>

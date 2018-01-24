@@ -1,25 +1,26 @@
-from django.conf.urls import url, include
+from django.conf.urls import include
+from django.urls import path
 
 from . import views
 
 urlpatterns = [
-	url(r'^$', views.home, name='home'),
-	url(r'^devices/', include([
-		url(r'^$', views.ItemList.as_view(), name='device-list'),
-		url(r'^create/$', views.ItemCreation.as_view(), name='device-create'),
-		url(r'^(?P<pk>\d+)/', include([
-			url(r'^$', views.ItemDetail.as_view(), name='device-detail'),
-			url(r'^update/$', views.ItemUpdate.as_view(), name='device-update'),
-			url(r'^delete/$', views.ItemDelete.as_view(), name='device-delete'),
+	path('', views.home, name='home'),
+	path('devices/', include([
+		path('', views.ItemList.as_view(), name='device-list'),
+		path('create/', views.ItemCreation.as_view(), name='device-create'),
+		path('<int:pk>/', include([
+			path('', views.ItemDetail.as_view(), name='device-detail'),
+			path('update', views.ItemUpdate.as_view(), name='device-update'),
+			path('delete', views.ItemDelete.as_view(), name='device-delete'),
 		])),
 	])),
-	url(r'^types/', include([
-		url(r'^$', views.TypeList.as_view(), name='type-list'),
-		url(r'^create/$', views.TypeCreation.as_view(), name='type-create'),
-		url(r'^(?P<pk>\d+)/', include([
-			url(r'^$', views.TypeDetail.as_view(), name='type-detail'),
-			url(r'^update/$', views.TypeUpdate.as_view(), name='type-update'),
-			url(r'^delete/$', views.TypeDelete.as_view(), name='type-delete'),
+	path('types/', include([
+		path('', views.TypeList.as_view(), name='type-list'),
+		path('create/', views.TypeCreation.as_view(), name='type-create'),
+		path('<int:pk>/', include([
+			path('', views.TypeDetail.as_view(), name='type-detail'),
+			path('update/', views.TypeUpdate.as_view(), name='type-update'),
+			path('delete/', views.TypeDelete.as_view(), name='type-delete'),
 		])),
 	])),
 ]
