@@ -35,7 +35,7 @@
             </ul>
             <div class="text-muted">
                 {% if user.is_authenticated and user.first_name != null %}
-                    <a href="{% url 'account' user.pk %}">{{ user.first_name }} {{ user.last_name }}</a> |
+                    {{ user.first_name }} {{ user.last_name }} |
                 {% elif user.is_authenticated %}
                     {{ user }} |
                 {% endif %}

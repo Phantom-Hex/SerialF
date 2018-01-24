@@ -20,10 +20,10 @@ from django.urls import path
 from Serial import views
 
 urlpatterns = [
-	path(r'admin/', admin.site.urls),
-	path(r'', include('Serial.urls')),
-	path(r'login/', views.LoginView.as_view(), name='login'),
-	path(r'logout/', views.LogoutView.as_view(), name='logout'),
-	path('account/<int:pk>/', views.EditView.as_view(), name='account'),
-	path(r'signup/', views.SignUp.as_view(), name='signup')
+	path('admin/', admin.site.urls),
+	path('', include('Serial.urls')),
+	path('login/', views.LoginView.as_view(), name='login'),
+	path('logout/', views.LogoutView.as_view(), name='logout'),
+	path('accounts/<int:pk>/', views.EditView.as_view(), name='account'),
+	path('signup/', views.SignUp.as_view(), name='signup')
 ] 

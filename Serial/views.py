@@ -1,4 +1,4 @@
-from django.contrib.auth import login, logout
+from django.contrib.auth import login, logout, forms
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -45,6 +45,15 @@ class EditView(generic.FormView):
 	def form_valid(self, form):
 		login(self.request, form.get_user())
 		return super().form_valid(form)
+
+
+# class PasswordView(forms.UserChangeForm):
+# 	success_url = reverse_lazy('home')
+# 	template_name = "form.html"
+#
+# 	def form_valid(self, form):
+# 		login(self.request, form.get_user())
+# 		return super().form_valid(form)
 
 
 class SignUp(generic.CreateView):

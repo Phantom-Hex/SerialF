@@ -1,8 +1,8 @@
 {% extends 'layout.html' %}
-{% load bootstrap4 %}
+{% load bootstrap4 %}{% load static %}
 
 {% block content %}
-    <div class="container col-10 pt-4">
+    <div class="container col-md-8 pt-4 mx-auto">
         <form action="" method="post" class="form form-group" enctype="multipart/form-data">
             {% csrf_token %}
             {% bootstrap_form form %}

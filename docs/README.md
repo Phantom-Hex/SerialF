@@ -5,7 +5,8 @@ Currently a work-in-progress with issues still being addressed and things being 
 
 In order to test:
 * Create a user in the application
-* Log in
-* Have fun!
+* Add some things!
+* Delete some things!
+* CRUD all the things!
 
-**Note:** Some functions are still in development. 
+**Note:** Some functions are still in development.
