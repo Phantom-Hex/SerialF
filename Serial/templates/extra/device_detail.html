@@ -3,26 +3,33 @@
     About {{ device.name }}
 {% endblock %}
 {% block content %}
-    <h1>About {{ device.name }}</h1>
-    <br />
-    <h4>Vital Data:</h4>
-    <figure class="Figure">
-        <img src="{{ MEDIA_URL }}{{ device.photo }}" alt="{{ device.name }}" class="figure-img img-fluid" width="640" height="480">
-        <figcaption class="caption">{{ device.name }} is a {{ device.type.type_size|lower }} {{ device.type.type_name|lower }} made by <a href="{{ device.maker.maker_wiki }}">{{ device.maker }}</a>.</figcaption>
-    </figure>
-    <ul class="list list-unstyled">
-        <li><strong>Name:</strong> {{ device.name }} </li>
-        <li><strong>Description:</strong> {{ device.description }}</li>
-        <li><strong>SKU:</strong> {{ device.SKU }}</li>
-        <hr>
-        <li class="small">Created {{ device.created_at|timesince }} ago on {{  device.created_at }} by {{ device.created_by.first_name }}</li>
-    </ul>
-    <div class="btn-group">
-        <a class="btn btn-sm btn-primary" href="{% url 'device-list' %}">Return to inventory</a>
-        {% if user.is_authenticated %}
-            <a class="btn btn-sm btn-info" href="{% url 'device-update' device.pk %}">Update</a>
-            <a class="btn btn-sm btn-info" href="{% url 'device-delete' device.pk %}">Delete</a>
-        {% endif %}
+    <h1 class="pt-3">About {{ device.name }}</h1>
+    <hr>
+    <div class="row">
+        <div class="col-md-8 order-md-2">
+            <figure class="Figure">
+                <img src="{{ MEDIA_URL }}{{ device.photo }}" alt="{{ device.name }}" class="figure-img img-fluid" width="640" height="480">
+                <figcaption class="caption">{{ device.name }} is a {{ device.type.type_size|lower }} {{ device.type.type_name|lower }} made by <a href="{{ device.maker.maker_wiki }}">{{ device.maker.maker_name }}</a>.</figcaption>
+            </figure>
+        </div>
+        <div class="col-md-4 order-md-1">
+            <h3>Vital Data:</h3>
+            <ul class="list list-unstyled">
+                <li><strong>Name:</strong> {{ device.name }} </li>
+                <li><strong>Description:</strong> {{ device.description }}</li>
+                <li><strong>SKU:</strong> {{ device.SKU }}</li>
+                <hr>
+                <li class="small">Created {{ device.created_at|timesince }} ago on {{  device.created_at.date }} by {{ device.created_by.first_name }}</li>
+            </ul>
+            <div class="btn-group">
+                <a class="btn btn-sm btn-primary" href="{% url 'device-list' %}">Return to inventory</a>
+                {% if user.is_authenticated %}
+                    <a class="btn btn-sm btn-info" href="{% url 'device-update' device.pk %}">Update</a>
+                    <a class="btn btn-sm btn-info" href="{% url 'device-delete' device.pk %}">Delete</a>
+                {% endif %}
+            </div>
+        </div>
     </div>
+
 {% endblock %}
 

@@ -1,8 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
 
-# Create your models here.
-
 
 def user_directory_path(instance, filename):
 	return u'user_{0}/{1}'.format(instance.user.id, filename)
@@ -22,6 +20,7 @@ class Type(models.Model):
 
 class Maker(models.Model):
 	maker_name = models.CharField(max_length=60)
+	maker_type = models.CharField(max_length=40)
 
 	@models.permalink
 	def get_absolute_url(self):
@@ -41,7 +40,7 @@ class Device(models.Model):
 	SKU = models.CharField(max_length=60)
 	description = models.TextField()
 	created_at = models.DateTimeField(auto_now_add=True)
-	photo = models.ImageField(upload_to='img/%Y-%m-%d', null=True, blank=True, default="img/no-img.jpg")
+	photo = models.ImageField(upload_to='img/%Y-%m-%d', null=True, blank=True, default='img/no-img.jpeg')
 	created_by = models.ForeignKey(User, on_delete=models.CASCADE)
 
 	@models.permalink
@@ -49,7 +48,7 @@ class Device(models.Model):
 		return 'device-detail', (), {'pk': self.pk}
 
 	def __str__(self):
-		return "{} ({})".format(self.name, self.type)
+		return "{} [{}]".format(self.name, self.type)
 
 
 class UserLoginForm(models.Model):
