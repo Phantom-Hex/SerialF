@@ -5,17 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21ef2dd4-7a3c-4da4-9705-dae65966603f" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/SerialF.iml" afterPath="$PROJECT_DIR$/.idea/SerialF.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Serial/forms.py" afterPath="$PROJECT_DIR$/Serial/forms.py" />
-      <change beforePath="$PROJECT_DIR$/Serial/templates/form.html" afterPath="$PROJECT_DIR$/Serial/templates/form.html" />
-      <change beforePath="$PROJECT_DIR$/Serial/views.py" afterPath="$PROJECT_DIR$/Serial/views.py" />
-      <change beforePath="$PROJECT_DIR$/SerialF/urls.py" afterPath="$PROJECT_DIR$/SerialF/urls.py" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change beforePath="$PROJECT_DIR$/docs/README.md" afterPath="$PROJECT_DIR$/docs/README.md" />
-      <change beforePath="$PROJECT_DIR$/templates/home.html" afterPath="$PROJECT_DIR$/templates/home.html" />
-      <change beforePath="$PROJECT_DIR$/templates/layout.html" afterPath="$PROJECT_DIR$/templates/layout.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -293,6 +283,14 @@
       <option name="presentableId" value="Default" />
       <updated>1510614130233</updated>
     </task>
+    <task id="LOCAL-00001" summary="Disabled account login link on Navbar.">
+      <created>1516820069380</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1516820069381</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TodoView">
@@ -372,6 +370,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Disabled account login link on Navbar." />
+    <option name="LAST_COMMIT_MESSAGE" value="Disabled account login link on Navbar." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -706,7 +708,7 @@
         <state relative-caret-position="223">
           <caret line="48" column="0" lean-forward="true" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
           <folding>
-            <element signature="e#0#52#0" expanded="true" />
+            <element signature="e#0#52#0" expanded="false" />
           </folding>
         </state>
       </provider>
