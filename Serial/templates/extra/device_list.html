@@ -6,13 +6,13 @@
     <div>
         <h3 class="py-3">{{ devices.count }} devices in System Inventory<br>
             {% if user.is_authenticated %}
-                <a class="btn btn-outline-primary btn-sm mt-3" href="{% url 'device-create' %}">Create</a>
+                <a class="btn btn-sm btn-outline-primary mt-3" href="{% url 'device-create' %}">Create</a>
             {% endif %}
         </h3>
     </div>
     <div class="row">
-        <div class="col-sm-3">
-            <table class="table table-responsive">
+        <div class="col col-sm-3">
+            <table class="table table-hover">
                 <thead>
                 <tr>
                     <th>Last 5 added</th>
@@ -30,22 +30,25 @@
         <div class="col-sm-9">
             <div class="row">
                 {% for device in devices %}
-                    <div class="col-4 col-xs-3 col-md-4 col-lg-3 col-xl-3">
+                    <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-4 card-group">
                         <div class="card bg-dark text-light">
                             <img class="card-img-top img-thumbnail" src="{{ MEDIA_URL }}{{ device.photo }}"
                                  alt="{{ device.description }}">
                             <div class="card-body">
                                 <h6 class="card-title">{{ device.name }}</h6>
-                                <p class="card-text small">{{ device.maker }}</p>
+                                <small class="card-text">{{ device.maker }}</small>
+                            </div>
+                            <div class="card-footer">
                                 {% if user.is_authenticated %}
-                                    <a href="{% url 'device-detail' device.pk %}" class="btn btn-primary">Details</a>
+                                    <a href="{% url 'device-detail' device.pk %}" class="btn btn-sm btn-primary">Details</a>
                                 {% endif %}
                             </div>
                         </div>
-                        <br/>
+                    <br><br>
                     </div>
                 {% endfor %}
             </div>
         </div>
     </div>
+    <br>
 {% endblock %}

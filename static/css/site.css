@@ -2,9 +2,19 @@
 
 body {
     font-family: 'Oswald', "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1rem;
 }
 
 
 #SF {
     font-family: "Bungee", "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+}
+
+nav {
+    font-size: 1.2rem;
+    align-content: center;
+}
+
+.card-columns {
+    display: flex;
 }

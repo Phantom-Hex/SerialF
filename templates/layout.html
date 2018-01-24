@@ -1,15 +1,21 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %} | Serial Flakes</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Oswald:300|Bungee:400" rel="stylesheet">
-    <link rel="stylesheet" href="../static/css/site.css">
+    <link rel="stylesheet" href="{% static "css/site.css" %}">
+    <!-- Scripts -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <body>
-
 <!-- Navbar -->
 <nav class="navbar navbar-expand-md navbar-dark bg-dark justify-content-between">
     <div class="container mr-auto text-uppercase small">
@@ -44,18 +50,18 @@
     </div>
 </nav>
 
-{# Other content #}
+{# main content #}
 <div class="container mx-auto">
-    {% block content %}
-    {% endblock %}
+    {% block content %}{% endblock %}
 </div>
-<footer class="panel-footer bg-dark text-center text-light p-5 my-5">
+<br>
+<footer class="panel-footer bg-dark text-center text-light p-4">
     <div class="container">
-        {% block footer %}
-        {% endblock %}
+        {% block footer %}{% endblock %}
     </div>
     {% if user.is_superuser %}
-        <p class="text-danger text-uppercase pt-4">Danger mode is active.</p>
+        <p class="text-danger text-uppercase pt-4">Danger mode active.</p>
+        <small>Please don't break anything.</small>
     {% endif %}
     <hr>
     <a href="http://facebook.com">
@@ -70,14 +76,10 @@
     <a href="http://github.com/tonytornado">
         <i class="fab fa-github-square mx-auto fa-2x"></i>&nbsp;
     </a>
+    <br>
     <blockquote class="blockquote">
         <small>&copy; 2018 - Tony Thigpen</small>
     </blockquote>
 </footer>
-<!-- Scripts -->
-<script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
