@@ -10,7 +10,9 @@ About {{ type.type_name }}
         {% if type.device_type.count > 0 %}
             <h4>Items registered:</h4>
             {% for foo in type.device_type.all %}
-                <li class="list-unstyled"><a href="{{ foo.get_absolute_url }}">{{ foo.name }}</a> by {{ foo.created_by.first_name }}</li>
+                <li class="list-unstyled"><a href="{{ foo.get_absolute_url }}">{{ foo.name }}</a> added by {{ foo.created_by.first_name }}</li>
+                <small>By {{ foo.maker.maker_name }}, {{ foo.maker.maker_type }}</small>
+                <br><br>
             {% endfor %}
         {% endif %}
     </ul>
