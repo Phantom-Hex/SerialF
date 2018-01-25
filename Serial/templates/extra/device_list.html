@@ -20,7 +20,12 @@
                 </thead>
                 {% for device in devices|slice:":5" %}
                     <tr>
-                        <td><strong>{{ device.name|upper }}</strong><br>
+                        <td>
+                            {% if user.is_authenticated %}
+                                <a href="{% url 'device-detail' device.pk %}"><strong>{{ device.name|upper }}</strong></a><br>
+                                {% else %}
+                                <strong>{{ device.name|upper }}</strong><br>
+                            {% endif %}
                             <small class="small">Added by {{ device.created_by.first_name }}</small>
                         </td>
                     </tr>
@@ -29,26 +34,41 @@
         </div>
         <div class="col-sm-9">
             <div class="row">
+                <!-- Cards -->
                 {% for device in devices %}
-                    <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-4 card-group">
-                        <div class="card bg-dark text-light">
+                    <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-4 card-group">
+                        <div class="card bg-dark text-light p-2 my-1 mx-auto">
                             <img class="card-img-top img-thumbnail" src="{{ MEDIA_URL }}{{ device.photo }}"
                                  alt="{{ device.description }}">
                             <div class="card-body">
-                                <h6 class="card-title">{{ device.name }}</h6>
-                                <small class="card-text">{{ device.maker }}</small>
+                                <h3>{{ device.name }}</h3>
+                                <small>by {{ device.maker }}</small>
                             </div>
                             <div class="card-footer">
-                                {% if user.is_authenticated %}
-                                    <a href="{% url 'device-detail' device.pk %}" class="btn btn-sm btn-primary">Details</a>
-                                {% endif %}
+                                <div class="btn-group">
+                                    <button type="button" id="example" class="btn btn-sm btn-secondary"
+                                            data-toggle="popover" title="{{ device.name }}"
+                                            data-content="{{ device.description }} - <p>SKU: {{ device.SKU }}</p>"
+                                            data-html="true">
+                                        Quick Info
+                                    </button>
+                                    {% if user.is_authenticated %}
+                                        <a href="{% url 'device-detail' device.pk %}"
+                                           class="btn btn-sm btn-primary">Details</a>
+                                    {% endif %}
+                                </div>
                             </div>
                         </div>
-                    <br><br>
                     </div>
                 {% endfor %}
+            <br>
             </div>
         </div>
     </div>
     <br>
+    <script>
+        $(function () {
+            $('[data-toggle="popover"]').popover();
+        })
+    </script>
 {% endblock %}

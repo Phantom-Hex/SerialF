@@ -8,7 +8,7 @@
         <p class="display-3" id="SF">Serial Flakes</p>
         <h2 class="text-muted">A Code Louisville project.</h2>
     </div>
-    <div class="lead">
+    <div class="container p-5 m-5">
     {% if user.is_authenticated and user.first_name != null %}
         <h1 class="display-4">Welcome, {{ user.first_name }}!</h1>
         <p>This is a project designed to keep things in check. Feel free to browse around.</p>
@@ -17,7 +17,7 @@
         <p >This is a project designed to keep things in check. Feel free to browse around, {{ user.first_name }}.</p>
     {% else %}
         <h1 class="display-4">Hi there!</h1>
-        <p class="lead">Welcome to the Serial Flakes project.
+        <p>Welcome to the Serial Flakes project.
             If you haven't already, please register and then login.<br>
             Or, if you have a login already, please login!</p>
     {% endif %}

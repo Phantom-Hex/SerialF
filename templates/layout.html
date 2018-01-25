@@ -55,12 +55,13 @@
     {% block content %}{% endblock %}
 </div>
 <br>
-<footer class="panel-footer bg-dark text-center text-light p-4">
+<footer class="bg-dark text-center text-light py-5">
     <div class="container">
-        {% block footer %}{% endblock %}
+        {% block footer %}
+        {% endblock %}
     </div>
     {% if user.is_superuser %}
-        <p class="text-danger text-uppercase pt-4">Danger mode active.</p>
+        <p class="text-danger text-uppercase">Danger mode active.</p>
         <small>Please don't break anything.</small>
     {% endif %}
     <hr>
