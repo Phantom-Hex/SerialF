@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Bungee|Bungee+Outline|Oswald:300');
+@import url('https://fonts.googleapis.com/css?family=Bungee|Roboto+Condensed');
 
 body {
-    font-family: 'Oswald', "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Roboto Condensed', "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 1rem;
 }
 
