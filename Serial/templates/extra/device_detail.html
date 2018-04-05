@@ -18,6 +18,7 @@
                 <li><strong>Name:</strong> {{ device.name }} </li>
                 <li><strong>Description:</strong> {{ device.description }}</li>
                 <li><strong>SKU:</strong> {{ device.SKU }}</li>
+                <li><strong>Availability</strong> {{ device.checked_out }}</li>
                 <hr>
                 <li class="small">Created {{ device.created_at|timesince }} ago on {{  device.created_at.date }} by {{ device.created_by.first_name }}</li>
             </ul>

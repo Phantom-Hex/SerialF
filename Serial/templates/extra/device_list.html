@@ -43,12 +43,17 @@
                             <div class="card-body">
                                 <h3>{{ device.name }}</h3>
                                 <small>by {{ device.maker }}</small>
+                                <input type="checkbox" class="disabled" value="{{ device.checkout }}" disabled>
                             </div>
                             <div class="card-footer">
                                 <div class="btn-group">
+                                    {#                                Set a checkout thing here!#}
+                                    {#                                    {% if not device.checkout %}#}
+                                    {#                                        <a class="btn btn-sm btn-secondary" href="{{ device.check_out }}">Blah</a>#}
+                                    {#                                    {% endif %}#}
                                     <button type="button" id="example" class="btn btn-sm btn-secondary"
                                             data-toggle="popover" title="{{ device.name }}"
-                                            data-content="{{ device.description }}<p>SKU: {{ device.SKU }}</p>"
+                                            data-content="{{ device.description }}<p>SKU: {{ device.SKU }}</p><p>{{ device.checked_out }}</p>"
                                             data-html="true">
                                         Quick Info
                                     </button>

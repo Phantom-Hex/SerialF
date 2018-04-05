@@ -46,9 +46,9 @@ class Device(models.Model):
 
     def checked_out(self):
         if self.checkout is True:
-            return "Checked out by: {}".format(self.get_latest_by)
+            return "Checked out by: {}".format(self.get_previous_by_created_at())
         else:
-            pass
+            return "Available"
 
     @models.permalink
     def get_absolute_url(self):
