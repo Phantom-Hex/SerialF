@@ -10,7 +10,6 @@ class Type(models.Model):
     type_name = models.CharField(max_length=60)
     type_size = models.CharField(max_length=60)
 
-    @models.permalink
     def get_absolute_url(self):
         return 'type-detail', (), {'pk': self.pk}
 
@@ -22,7 +21,6 @@ class Maker(models.Model):
     maker_name = models.CharField(max_length=60)
     maker_type = models.CharField(max_length=40)
 
-    @models.permalink
     def get_absolute_url(self):
         return 'type-detail', (), {'pk': self.pk}
 
@@ -33,6 +31,10 @@ class Maker(models.Model):
         return "http://en.wikipedia.com/wiki/{}".format(self.maker_name)
 
 
+class Checkout(models.Model):
+    name = models.BooleanField(null=False, name="name")
+
+
 class Device(models.Model):
     name = models.CharField(max_length=255)
     type = models.ForeignKey(Type, models.CASCADE, related_name='device_type')
@@ -41,7 +43,7 @@ class Device(models.Model):
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     photo = models.ImageField(upload_to='img/%Y-%m-%d', null=True, blank=True, default='img/no-img.jpeg')
-    checkout = models.BooleanField(default=False)
+    checkout = models.ForeignKey(Checkout, models.CASCADE, related_name='device_checked_out')
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def checked_out(self):
@@ -50,7 +52,6 @@ class Device(models.Model):
         else:
             return "Available"
 
-    @models.permalink
     def get_absolute_url(self):
         return 'device-detail', (), {'pk': self.pk}
 
